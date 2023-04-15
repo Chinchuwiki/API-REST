@@ -1,7 +1,7 @@
 // La constante URL almacena la URL de la API a la cual se realizará la petición para obtener una imagen aleatoria de gato.
 const URL = "https://api.thecatapi.com/v1/images/search";
 
-//  es una variable que obtiene el elemento HTML con el id "imagenAleatoria". Este elemento se utilizará para mostrar la imagen obtenida de la API.
+//es una variable que obtiene el elemento HTML con el id "imagenAleatoria". Este elemento se utilizará para mostrar la imagen obtenida de la API.
 const img = document.getElementById("imagenAleatoria");
 
 //es una variable que obtiene el elemento HTML con el id "botonSiguiente". Este elemento representa un botón que se utilizará para solicitar una nueva imagen aleatoria de gato.
@@ -17,6 +17,9 @@ fetch(URL)
     img.src = data[0].url;
   });
 }
+
+//Se utiliza window.addEventListener('load', obtenerImagenAleatoria) para agregar un evento de carga a la ventana (window) que llama a la función obtenerImagenAleatoria() cuando la página se carga por primera vez. Esto asegura que la función se ejecutará automáticamente cuando la página esté completamente cargada.
+window.addEventListener('load', obtenerImagenAleatoria);
 
 //El evento de click del botón "botonSiguiente" está siendo escuchado mediante botonSiguiente.addEventListener("click", obtenerImagenAleatoria). Esto significa que cada vez que el botón sea clickeado, se ejecutará la función obtenerImagenAleatoria, la cual obtendrá y mostrará una nueva imagen aleatoria de gato de la API en el elemento img.
   botonSiguiente.addEventListener("click", obtenerImagenAleatoria);
