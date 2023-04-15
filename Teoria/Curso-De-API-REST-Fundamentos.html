@@ -1,0 +1,115 @@
+// ¿Qué es una API REST?
+
+API REST o API de RESTful es una interfaz de programación de aplicaciones (API o API web) que se ajusta a los límites de la arquitectura REST y permite la interacción con los servicios web de RESTful. El informático Roy Fielding es el creador de la transferencia de estado representacional (REST).
+
+-----------------------------------------------------------
+
+// Flujo de comunicación entre usuarios, frontend y backend
+
+El usuario realiza una solicitud desde el frontend: El usuario interactúa con la interfaz de usuario en el frontend, por ejemplo, al hacer clic en un botón o enviar un formulario. Esto genera una solicitud HTTP (por lo general, una solicitud GET, POST, PUT, DELETE u otra) desde el frontend al backend.
+
+La solicitud se envía al servidor: La solicitud HTTP se envía al servidor en el backend. El servidor es responsable de procesar la solicitud y determinar cómo manejarla.
+
+El backend procesa la solicitud: En el backend, se ejecuta el código del servidor, que puede incluir la validación de la solicitud, la autorización, la autenticación, la manipulación de datos y la lógica de negocio. Esto puede implicar la consulta de una base de datos, la manipulación de datos o la interacción con otros servicios.
+
+El backend genera una respuesta: Una vez que el backend ha procesado la solicitud, genera una respuesta HTTP que contiene los datos solicitados o información sobre el resultado de la operación solicitada. Esta respuesta se envía al frontend.
+
+La respuesta se envía al frontend: La respuesta HTTP generada por el backend se envía al frontend, que la recibe como parte de la respuesta de la solicitud HTTP original realizada por el usuario.
+
+El frontend procesa la respuesta: El frontend procesa la respuesta recibida del backend, lo que puede implicar la manipulación de datos, la actualización de la interfaz de usuario y la presentación de la información al usuario final.
+
+La interfaz de usuario se actualiza: Una vez que el frontend ha procesado la respuesta del backend, puede actualizar la interfaz de usuario para mostrar la información solicitada o para reflejar el resultado de la operación solicitada por el usuario.
+
+Este flujo de comunicación entre usuarios, frontend y backend es esencial en una arquitectura de API REST, donde las solicitudes y respuestas HTTP son la forma principal de interacción entre el frontend y el backend. Es importante entender cómo funciona este flujo para desarrollar aplicaciones web eficientes y funcionales utilizando APIs REST en JavaScript u otros lenguajes de programación.
+
+-----------------------------------------------------------
+
+// Consume tu primera API REST
+
+La siguiente funcion utiliza el metodo "fetch":
+const obtenerImagenAleatoria = () => {
+    fetch(URL)
+      .then((res) => res.json())
+      .then((data) => {
+        img.src = data[0].url;
+      });
+    }
+
+Ahora la misma funcion es realizada con el metodo "async":  
+const obtenerImagenAleatoria = async () => {
+    try {
+      const response = await fetch(URL);
+      const data = await response.json();
+      img.src = data[0].url;
+    } catch (error) {
+      console.error('Error al obtener la imagen:', error);
+    }
+  }
+
+  En esta versión, se utiliza la palabra clave async antes de la definición de la función obtenerImagenAleatoria() para indicar que la función contiene operaciones asincrónicas. Luego, dentro de la función, se utiliza await antes de cada operación asincrónica, en este caso, fetch() y response.json(), para esperar a que se completen antes de pasar a la siguiente línea de código.
+  Si ocurre algún error durante la obtención de la imagen, se captura el error en el bloque catch para manejarlo adecuadamente.
+
+-----------------------------------------------------------
+
+// Endpoints y query parameters
+
+En el contexto de JavaScript, los "endpoints" y los "query parameters" son términos que se refieren a conceptos relacionados con la comunicación entre una aplicación cliente y un servidor mediante solicitudes HTTP.
+
+*Endpoints: En el contexto de desarrollo web, un endpoint se refiere a una URL específica de un servidor que puede ser accedida por una aplicación cliente para realizar una acción o recuperar datos. Por lo tanto, un endpoint es la dirección a la cual se realiza una solicitud HTTP para interactuar con un servidor y acceder a los recursos o servicios proporcionados por dicho servidor. Los endpoints son utilizados para implementar diferentes funcionalidades, como recuperar datos, actualizar datos, eliminar datos o realizar acciones específicas en un servidor.
+
+*Query Parameters: Los "query parameters" (parámetros de consulta) son parte de la URL utilizada para enviar datos al servidor como parte de una solicitud HTTP. Estos parámetros se incluyen en la URL después del signo de interrogación "?" y se separan por "&". Los query parameters son utilizados para enviar información adicional al servidor para filtrar, ordenar o personalizar la respuesta de una solicitud. Por ejemplo, en la URL "https://api.example.com/products?category=electronics&price_range=100-500", los query parameters son "category" y "price_range", y sus valores son "electronics" y "100-500" respectivamente.
+
+En JavaScript, se pueden utilizar APIs como XMLHttpRequest o Fetch para realizar solicitudes HTTP a endpoints específicos en un servidor y enviar query parameters para personalizar la solicitud. Estos conceptos son ampliamente utilizados en el desarrollo de aplicaciones web y servicios RESTful para interactuar con APIs y obtener datos o realizar acciones en el servidor.
+
+-----------------------------------------------------------
+
+// ¿Qué son los HTTP Status Codes?
+
+Los códigos de estado HTTP en JavaScript son códigos numéricos de tres dígitos que indican el resultado de una solicitud HTTP realizada por un cliente (como un navegador web) a un servidor. Estos códigos son devueltos por el servidor como parte de la respuesta HTTP para indicar el estado de la solicitud.
+
+En JavaScript, los códigos de estado HTTP se utilizan para verificar el resultado de una solicitud HTTP y tomar decisiones basadas en el estado de la respuesta. Los códigos de estado más comunes son:
+
+200 OK: Indica que la solicitud se ha realizado con éxito y el servidor ha devuelto los datos solicitados.
+201 Created: Indica que la solicitud ha resultado en la creación exitosa de un nuevo recurso en el servidor.
+204 No Content: Indica que la solicitud se ha realizado con éxito pero no hay contenido para devolver.
+400 Bad Request: Indica que la solicitud del cliente es incorrecta o malformada.
+401 Unauthorized: Indica que la solicitud requiere autenticación y el cliente no ha proporcionado las credenciales necesarias.
+403 Forbidden: Indica que el cliente no tiene permiso para acceder al recurso solicitado.
+404 Not Found: Indica que el recurso solicitado no se ha encontrado en el servidor.
+500 Internal Server Error: Indica que el servidor ha encontrado un error interno al procesar la solicitud.
+
+Estos son solo algunos ejemplos de los códigos de estado HTTP que se utilizan en JavaScript para manejar respuestas de servidor en solicitudes HTTP. Es importante comprender y manejar adecuadamente estos códigos de estado en tu código JavaScript para asegurarse de que tu aplicación web funcione de manera correcta y maneje correctamente las respuestas del servidor.
+
+-----------------------------------------------------------
+
+// ¿Qué es una API KEY?
+
+Una API KEY (clave de API, en español) en JavaScript se refiere a una clave única generada por un servicio de API (Interfaz de Programación de Aplicaciones) que se utiliza para autenticar y autorizar el acceso a sus servicios en una aplicación JavaScript. Una API es un conjunto de reglas y protocolos que permiten a aplicaciones y sistemas interactuar entre sí.
+
+En el contexto de JavaScript, las API KEYs se utilizan como una forma de proteger y controlar el acceso a los recursos y datos proporcionados por una API externa. Cuando se utiliza una API en una aplicación JavaScript, se puede requerir una API KEY como parte del proceso de autenticación para asegurarse de que sólo los usuarios autorizados puedan acceder a los recursos de la API.
+
+La API KEY suele ser proporcionada por el proveedor del servicio de API, y puede ser una cadena de caracteres larga y compleja. Se debe incluir en las solicitudes a la API como un parámetro o un encabezado, dependiendo de las especificaciones de la API en cuestión. Una vez que la API KEY ha sido proporcionada y validada correctamente, la aplicación JavaScript puede acceder a los recursos y datos de la API según las reglas y permisos establecidos por el proveedor de la API.
+
+Es importante tener en cuenta que la API KEY es un elemento de seguridad importante y debe ser tratada con cuidado. No se debe compartir ni hacer pública en el código fuente de una aplicación JavaScript, ya que podría permitir el acceso no autorizado a los recursos de la API. Además, es recomendable seguir las mejores prácticas de seguridad y cifrar la API KEY y cualquier otra información sensible almacenada en la aplicación JavaScript.
+
+-----------------------------------------------------------
+
+// Maquetación del proyecto
+
+-----------------------------------------------------------
+
+// ¿Qué son los Métodos HTTP?
+
+En JavaScript, los métodos HTTP se utilizan para realizar solicitudes y recibir respuestas de recursos en la web utilizando el protocolo HTTP (Protocolo de Transferencia de Hipertexto). Los métodos HTTP son verbos que indican la acción que se desea realizar en un recurso web, como obtener datos, enviar datos, actualizar datos o eliminar datos. Los métodos HTTP más comunes son los siguientes:
+
+GET: Este método se utiliza para solicitar datos de un recurso web. La respuesta del servidor contiene los datos solicitados que pueden ser utilizados en JavaScript para mostrar en una página web.
+
+POST: Este método se utiliza para enviar datos a un recurso web. Los datos enviados en el cuerpo de la solicitud son procesados por el servidor y se pueden utilizar para crear nuevos recursos o actualizar recursos existentes.
+
+PUT: Este método se utiliza para actualizar un recurso web existente con los datos enviados en el cuerpo de la solicitud. Si el recurso no existe, puede ser creado.
+
+DELETE: Este método se utiliza para eliminar un recurso web existente. La solicitud de eliminación puede ser procesada por el servidor y el recurso correspondiente puede ser eliminado.
+
+Estos son algunos de los métodos HTTP más utilizados en JavaScript para realizar solicitudes y recibir respuestas de recursos web. JavaScript proporciona diferentes formas de hacer solicitudes HTTP, como el uso de la API Fetch o la API XMLHttpRequest, para interactuar con servicios web y realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en recursos web.
+
+-----------------------------------------------------------
