@@ -12,7 +12,7 @@ body {
 }
 
 .contenedorGeneral {
-  width: 500px;
+  width: 650px;
   margin: 0 auto;
   background-color: white;
 }
@@ -30,15 +30,25 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   overflow: hidden;
   margin: 0 auto;
 }
 
-#imagenAleatoria {
-  max-width: 100%;
-  max-height: 100%;
+#imagenAleatoria1 {
+  max-width: 50%;
+  max-height: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+  object-fit: cover; 
+}
+
+#imagenAleatoria2 {
+  max-width: 50%;
+  max-height: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
   object-fit: cover;
 }
 

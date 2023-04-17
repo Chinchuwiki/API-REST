@@ -1,8 +1,9 @@
 // La constante URL almacena la URL de la API a la cual se realizará la petición para obtener una imagen aleatoria de gato.
-const URL = "https://api.thecatapi.com/v1/images/search";
+const URL = "https://api.thecatapi.com/v1/images/search?limit=4";
 
 //es una variable que obtiene el elemento HTML con el id "imagenAleatoria". Este elemento se utilizará para mostrar la imagen obtenida de la API.
-const img = document.getElementById("imagenAleatoria");
+const img1 = document.getElementById("imagenAleatoria1");
+const img2 = document.getElementById("imagenAleatoria2");
 
 //es una variable que obtiene el elemento HTML con el id "botonSiguiente". Este elemento representa un botón que se utilizará para solicitar una nueva imagen aleatoria de gato.
 const botonSiguiente = document.getElementById("botonSiguiente");
@@ -14,7 +15,9 @@ const obtenerImagenAleatoria = () => {
 fetch(URL)
   .then((res) => res.json())
   .then((data) => {
-    img.src = data[0].url;
+    console.log(data)
+    img1.src = data[0].url;
+    img2.src = data[1].url;
   });
 }
 

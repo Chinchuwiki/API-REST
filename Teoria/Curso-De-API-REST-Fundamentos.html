@@ -26,6 +26,26 @@ Este flujo de comunicación entre usuarios, frontend y backend es esencial en un
 
 // Consume tu primera API REST
 
+"fetch" es una función en JavaScript que se utiliza para realizar solicitudes de red y obtener recursos a través de la red, como archivos JSON, imágenes, archivos de texto, y otros tipos de datos, desde un servidor. Es parte del API Fetch, que es una funcionalidad incorporada en los navegadores web modernos que permite hacer peticiones HTTP y manipular respuestas de manera asíncrona.
+
+La sintaxis básica de fetch es la siguiente:
+
+fetch(url)
+.then(response => {
+  // Lógica para manejar la respuesta
+})
+.catch(error => {
+  // Lógica para manejar errores
+});
+
+Donde url es la URL del recurso que se desea obtener. fetch devuelve una promesa que resuelve en una respuesta (response) a la solicitud de red.
+
+Una vez que se obtiene la respuesta, se puede utilizar el método json(), text(), blob(), o arrayBuffer() en la respuesta para leer el cuerpo de la respuesta en diferentes formatos, dependiendo del tipo de contenido del recurso solicitado. También se pueden configurar opciones adicionales en un segundo parámetro pasado a fetch, como encabezados personalizados, método de solicitud, y más.
+
+Es importante tener en cuenta que fetch no maneja automáticamente errores de red, como errores de conexión o errores de servidor. Por lo tanto, es necesario utilizar catch para capturar y manejar cualquier error que pueda ocurrir durante la solicitud.
+
+
+
 La siguiente funcion utiliza el metodo "fetch":
 const obtenerImagenAleatoria = () => {
     fetch(URL)
