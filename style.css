@@ -12,7 +12,7 @@ body {
 }
 
 .contenedorGeneral {
-  width: 650px;
+  width: 550px;
   margin: 0 auto;
   background-color: white;
 }
@@ -21,7 +21,7 @@ h1 {
   margin-top: 60px;
   margin-bottom: 30px;
   padding-top: 10px;
-  font-size: 30px;
+  font-size: 35px;
   text-align: center;
   color: rgb(255, 129, 192);
 }
@@ -34,35 +34,53 @@ h1 {
   height: 500px;
   overflow: hidden;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 
-#imagenAleatoria1 {
-  max-width: 50%;
-  max-height: 50%;
-  margin-left: 10px;
-  margin-right: 10px;
-  object-fit: cover; 
+.divImagenAleatoria1,
+.divImagenAleatoria2,
+.divImagenAleatoria3,
+.divImagenAleatoria4 {
+  flex-basis: 50%;
+  height: 50%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
 }
 
-#imagenAleatoria2 {
-  max-width: 50%;
-  max-height: 50%;
-  margin-left: 10px;
-  margin-right: 10px;
-  object-fit: cover;
+#imagenAleatoria1, #imagenAleatoria2, #imagenAleatoria3, #imagenAleatoria4 {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#checkIcon {
+  width: 20px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+#checkIcon:hover {
+  background-color: rgb(255, 129, 192);
+  border-radius: 50%;
 }
 
 .contenedorBoton {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 25px;
+  margin-bottom: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 #botonSiguiente {
+  width: 100px;
   cursor: pointer;
-  transition: transform 0.1s ease-in-out;
+  transition: transform 0.01s ease-in-out;
 }
 
 #botonSiguiente:hover {
@@ -76,11 +94,11 @@ h1 {
 }
 
 .socialMedia {
-  width: 35px;
+  width: 30px;
   margin-left: 60px;
   margin-right: 60px;
   padding-bottom: 10px;
-  transition: transform 0.05s ease-in-out;
+  transition: transform 0.01s ease-in-out;
 }
 
 .socialMedia:hover {
