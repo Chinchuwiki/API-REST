@@ -2,13 +2,14 @@
   margin: 0;
   padding: 0;
   font-family: "Rubik Pixels";
+  
 }
 
 body {
   background-image: url("Imagen/catBackground.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: fixed;  
 }
 
 .contenedorGeneral {
@@ -71,7 +72,7 @@ h1 {
 
 .contenedorBoton {
   margin-top: 25px;
-  margin-bottom: 25px;
+  margin-bottom: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,6 +81,7 @@ h1 {
 #botonSiguiente {
   width: 100px;
   cursor: pointer;
+  margin-bottom: 10px;
   transition: transform 0.01s ease-in-out;
 }
 
@@ -87,17 +89,37 @@ h1 {
   transform: scale(0.9);
 }
 
+/*  */
+
+.contenedorImagenFavorita{
+ 
+}
+
+.articleImagenFavorita{
+
+}
+
+#botonBorrar{
+
+}
+
 .footerContainer {
+  width: 550px;
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
 }
 
 .socialMedia {
   width: 30px;
   margin-left: 60px;
   margin-right: 60px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
+  padding-top: 10px;
   transition: transform 0.01s ease-in-out;
 }
 
