@@ -1,0 +1,34 @@
+La función imagenAleatoria() es una función asincrónica en JavaScript que realiza las siguientes acciones:
+
+*Hace una solicitud a la API de The Cat API utilizando la función fetch() con la URL definida en la constante URL. La función fetch() devuelve una promesa que representa la respuesta de la solicitud HTTP.
+
+*Espera a que la promesa de la solicitud se resuelva utilizando la palabra clave await, lo que significa que la función se pausará en este punto hasta que la promesa se resuelva.
+
+*Una vez que la promesa se resuelve, la respuesta se almacena en la constante "res".
+
+*Luego, se llama a la función json() en la respuesta (res.json()) para obtener los datos de la respuesta en formato JSON. Esta también devuelve una promesa que representa los datos JSON.
+
+*Se espera a que la promesa de los datos JSON se resuelva utilizando await, lo que significa que la función se pausará nuevamente hasta que los datos se obtengan.
+
+*Una vez que los datos JSON se obtienen, se almacenan en la constante data.
+
+*Se verifica si el estado de la respuesta (res.status) es diferente de 200, lo que indica que hubo un error en la solicitud. Si es así, se muestra un mensaje de error en el elemento HTML con el id "error" utilizando la propiedad innerHTML.
+
+*Si el estado de la respuesta es 200, lo que indica una respuesta exitosa, se establecen las URL de las imágenes obtenidas de los datos JSON en los elementos HTML correspondientes con los ids "imagenAleatoria1", "imagenAleatoria2", "imagenAleatoria3" y "imagenAleatoria4" utilizando la propiedad src de los elementos img.
+
+async function imagenAleatoria() {
+    const res = await fetch(URL);
+    const data = await res.json();
+    console.log("imagenAleatoria", data);
+    if (res.status !== 200) {
+    spanError.innerHTML = "Hubo un error:" + res.status;
+    } else {
+    img1.src = data[0].url;
+    img2.src = data[1].url;
+    img3.src = data[2].url;
+    img4.src = data[3].url;
+    }
+}
+
+En resumen, la función imagenAleatoria() hace una solicitud a la API de The Cat API para obtener imágenes aleatorias de gatos y luego establece las URL de las imágenes en elementos HTML en caso de una respuesta exitosa, o muestra un mensaje de error en caso de una respuesta con un estado diferente a 200.
+//---------------------------------------------------------------------------------------------------------

@@ -47,11 +47,15 @@ Es importante tener en cuenta que fetch no maneja automáticamente errores de re
 
 
 La siguiente funcion utiliza el metodo "fetch":
-const obtenerImagenAleatoria = () => {
+  const obtenerImagenAleatoria = () => {
     fetch(URL)
       .then((res) => res.json())
       .then((data) => {
-        img.src = data[0].url;
+        console.log('Imagen Aleatoria', data)
+        img1.src = data[0].url;
+        img2.src = data[1].url;
+        img3.src = data[2].url;
+        img4.src = data[3].url;
       });
     }
 
@@ -140,5 +144,21 @@ Estos son algunos de los métodos HTTP más utilizados en JavaScript para realiz
 -----------------------------------------------------------
 
 // GET: leyendo michis favoritos
+
+-----------------------------------------------------------
+
+// POST: guardando michis favoritos
+
+-----------------------------------------------------------
+
+// Consultas a la API para escribir HTML dinámico
+
+-----------------------------------------------------------
+
+// Consultas a la API para escribir HTML dinámico
+
+-----------------------------------------------------------
+
+// DELETE: borrando michis favoritos
 
 -----------------------------------------------------------

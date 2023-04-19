@@ -2,14 +2,13 @@
   margin: 0;
   padding: 0;
   font-family: "Rubik Pixels";
-  
 }
 
 body {
   background-image: url("Imagen/catBackground.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;  
+  background-attachment: fixed;
 }
 
 .contenedorGeneral {
@@ -27,7 +26,7 @@ h1 {
   color: rgb(255, 129, 192);
 }
 
-.contenedorImagen {
+.sectionImagen {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,12 +51,18 @@ h1 {
   position: relative;
 }
 
-#imagenAleatoria1, #imagenAleatoria2, #imagenAleatoria3, #imagenAleatoria4 {
+#imagenAleatoria1,
+#imagenAleatoria2,
+#imagenAleatoria3,
+#imagenAleatoria4 {
   max-width: 100%;
   max-height: 100%;
 }
 
-#checkIcon {
+#checkIcon1,
+#checkIcon2,
+#checkIcon3,
+#checkIcon4 {
   width: 20px;
   position: absolute;
   bottom: 0;
@@ -65,7 +70,10 @@ h1 {
   cursor: pointer;
 }
 
-#checkIcon:hover {
+#checkIcon1:hover,
+#checkIcon2:hover,
+#checkIcon3:hover,
+#checkIcon4:hover {
   background-color: rgb(255, 129, 192);
   border-radius: 50%;
 }
@@ -87,20 +95,6 @@ h1 {
 
 #botonSiguiente:hover {
   transform: scale(0.9);
-}
-
-/*  */
-
-.contenedorImagenFavorita{
- 
-}
-
-.articleImagenFavorita{
-
-}
-
-#botonBorrar{
-
 }
 
 .footerContainer {
@@ -136,7 +130,7 @@ h1 {
     margin-bottom: 10px;
   }
 
-  .contenedorImagen {
+  .sectionImagen {
     width: 350px;
     height: 350px;
   }
