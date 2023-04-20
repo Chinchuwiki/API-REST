@@ -42,8 +42,9 @@ async function imagenFavorita() {
   if (res.status !== 200) {
     spanError.innerText = "Hubo un error:" + res.status + data.message;
   } else {
+    const section = document.getElementById("sectionImagenFavoritos");
+    section.innerHTML= '';
     data.forEach((gatito) => {
-      const section = document.getElementById("sectionImagenFavoritos");
       const article = document.createElement("article");
       const img = document.createElement("img");
       const btn = document.createElement("button");
@@ -57,13 +58,14 @@ async function imagenFavorita() {
       article.appendChild(img);
       article.appendChild(btn);
       section.appendChild(article);
+      btn.onclick = () => borrarImagenFavorita(gatito.id);
     });
   }
 }
 window.addEventListener("load", imagenFavorita);
 
 async function guardarImagenFavorita(id) {
-  const res = await fetch(URL_Delete(id), {
+  const res = await fetch(URL_Favourites, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ image_id: id }),
@@ -72,14 +74,21 @@ async function guardarImagenFavorita(id) {
   console.log("guardar", res);
   if (res.status !== 200) {
     spanError.innerText = "Hubo un error:" + res.status + data.message;
+  } else {
+    console.log('Gatito guardado en favoritos')
+    imagenFavorita();
   }
 }
 
 async function borrarImagenFavorita(id) {
-  const res = await fetch(URL_Favourites, {
+  const res = await fetch(URL_Delete(id), {
     method: "DELETE",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ image_id: id }),
   });
   const data = await res.json();
+  if (res.status !== 200) {
+    spanError.innerText = "Hubo un error:" + res.status + data.message;
+  } else {
+    console.log('Gatito borrado en favoritos')
+    imagenFavorita();
+  }
 }

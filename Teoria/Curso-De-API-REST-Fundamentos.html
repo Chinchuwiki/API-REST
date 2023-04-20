@@ -143,15 +143,11 @@ Estos son algunos de los métodos HTTP más utilizados en JavaScript para realiz
 
 -----------------------------------------------------------
 
-// GET: leyendo michis favoritos
+// GET: leyendo gatitos favoritos
 
 -----------------------------------------------------------
 
-// POST: guardando michis favoritos
-
------------------------------------------------------------
-
-// Consultas a la API para escribir HTML dinámico
+// POST: guardando gatitos favoritos
 
 -----------------------------------------------------------
 
@@ -159,6 +155,74 @@ Estos son algunos de los métodos HTTP más utilizados en JavaScript para realiz
 
 -----------------------------------------------------------
 
-// DELETE: borrando michis favoritos
+// Consultas a la API para escribir HTML dinámico
+
+-----------------------------------------------------------
+
+// DELETE: borrando gatitos favoritos
+
+-----------------------------------------------------------
+
+// ¿Qué son los Headers HTTP?
+
+Los headers HTTP en JavaScript son parte de las solicitudes y respuestas HTTP que se realizan a través de la API Fetch o XMLHttpRequest. Los headers son metadatos adicionales que se envían junto con una solicitud HTTP (headers de solicitud) o una respuesta HTTP (headers de respuesta). Los headers proporcionan información adicional sobre la solicitud o respuesta, como la codificación del contenido, el tipo de contenido, la autenticación, las cookies, entre otros.
+
+En JavaScript, puedes manipular los headers HTTP utilizando el objeto Headers, que es una interfaz nativa del lenguaje. El objeto Headers te permite crear, leer y modificar los headers de una solicitud o respuesta HTTP. Aquí hay algunos ejemplos de cómo puedes utilizar el objeto Headers en JavaScript:
+
+
+*Crear y añadir headers a una solicitud:
+
+const headers = new Headers();
+headers.append('Content-Type', 'application/json');
+headers.append('Authorization', 'Bearer <tu_token>');
+
+fetch('https://api.example.com/data', {
+  method: 'GET',
+  headers: headers
+})
+.then(response => {
+  // Hacer algo con la respuesta
+})
+.catch(error => {
+  // Manejar el error
+});
+
+
+*Leer headers de una respuesta:
+
+fetch('https://api.example.com/data')
+.then(response => {
+  const contentType = response.headers.get('Content-Type');
+  console.log('Tipo de contenido:', contentType);
+})
+.catch(error => {
+  // Manejar el error
+});
+
+
+*Modificar headers en una respuesta:
+
+const headers = new Headers();
+headers.append('Content-Type', 'application/json');
+
+const response = new Response('{"mensaje": "Hola mundo"}', {
+  status: 200,
+  headers: headers
+});
+
+// Modificar un header existente
+response.headers.set('Content-Type', 'application/xml');
+
+// Añadir un nuevo header
+response.headers.append('Authorization', 'Bearer <tu_token>');
+
+// Eliminar un header
+response.headers.delete('Content-Type');
+
+console.log(response.headers.get('Content-Type')); // null
+console.log(response.headers.get('Authorization')); // 'Bearer <tu_token>'
+
+
+En resumen, los headers HTTP en JavaScript son utilizados para enviar y recibir metadatos adicionales en las solicitudes y respuestas HTTP, y el objeto Headers proporciona una forma conveniente de manipularlos en el código JavaScript.
 
 -----------------------------------------------------------
