@@ -14,7 +14,6 @@ const checkIcon4 = document.getElementById("checkIcon4");
 const botonSiguiente = document.getElementById("botonSiguiente");
 const spanError = document.getElementById("error");
 
-// la función asincrona imagenAleatoria() hace una solicitud a la API de The Cat API para obtener imágenes aleatorias de gatos y luego establece las URL de las imágenes en elementos HTML en caso de una respuesta exitosa, o muestra un mensaje de error en caso de una respuesta con un estado diferente a 200.
 async function imagenAleatoria() {
   const res = await fetch(URL);
   const data = await res.json();
@@ -50,7 +49,10 @@ async function imagenFavorita() {
       const btn = document.createElement("button");
       const btnText = document.createTextNode("Borrar");
 
+      article.id = "articleFavorito"
+      img.id = "imgFavorito";
       img.src = gatito.image.url;
+      btn.id = "botonBorrar";
       btn.appendChild(btnText);
       article.appendChild(img);
       article.appendChild(btn);

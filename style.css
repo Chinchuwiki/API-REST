@@ -68,14 +68,16 @@ h1 {
   bottom: 0;
   right: 0;
   cursor: pointer;
+  transition: transform 0.01s ease-in-out;
 }
 
 #checkIcon1:hover,
 #checkIcon2:hover,
 #checkIcon3:hover,
 #checkIcon4:hover {
-  background-color: rgb(255, 129, 192);
   border-radius: 50%;
+  transform: scale(0.9);
+  background-color: rgb(255, 129, 192);
 }
 
 .contenedorBoton {
@@ -95,6 +97,40 @@ h1 {
 
 #botonSiguiente:hover {
   transform: scale(0.9);
+}
+
+#articleFavorito {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+#imgFavorito {
+  width: 100%;
+  height: auto;
+}
+
+#botonBorrar {
+  width: 100px;
+  height: 30px;
+  
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 25px;
+  color: rgb(255, 129, 192);
+  border: 1px solid rgb(255, 129, 192);
+  background-color: white;
+  transition: transform 0.01s ease-in-out;
+  margin-top: 10px;
+}
+
+#botonBorrar:hover {
+  color: white;
+  transform: scale(0.9);
+  background-color: rgb(255, 129, 192);
 }
 
 .footerContainer {
