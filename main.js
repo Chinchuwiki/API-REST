@@ -56,8 +56,8 @@ async function imagenFavorita() {
       btn.id = "botonBorrar";
       btn.appendChild(btnText);
       article.appendChild(img);
-      article.appendChild(btn);
       section.appendChild(article);
+      section.appendChild(btn);
       btn.onclick = () => borrarImagenFavorita(gatito.id);
     });
   }
