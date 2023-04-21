@@ -188,6 +188,7 @@ fetch('https://api.example.com/data', {
 });
 
 
+
 *Leer headers de una respuesta:
 
 fetch('https://api.example.com/data')
@@ -198,6 +199,7 @@ fetch('https://api.example.com/data')
 .catch(error => {
   // Manejar el error
 });
+
 
 
 *Modificar headers en una respuesta:
@@ -224,5 +226,44 @@ console.log(response.headers.get('Authorization')); // 'Bearer <tu_token>'
 
 
 En resumen, los headers HTTP en JavaScript son utilizados para enviar y recibir metadatos adicionales en las solicitudes y respuestas HTTP, y el objeto Headers proporciona una forma conveniente de manipularlos en el código JavaScript.
+
+-----------------------------------------------------------
+
+// Header de Content-Type
+El encabezado "Content-Type" en JavaScript se refiere a una propiedad de las solicitudes HTTP realizadas utilizando el objeto XMLHttpRequest o Fetch API, que permite especificar el tipo de contenido del cuerpo de la solicitud o la respuesta. El "Content-Type" es una parte importante de las cabeceras HTTP que se utilizan para comunicarse con servidores web y es esencial para el intercambio de datos estructurados como JSON, XML, imágenes, archivos, etc.
+
+El "Content-Type" se establece mediante la asignación de un valor a la propiedad "Content-Type" de la cabecera de la solicitud o la respuesta. El valor suele ser una cadena de texto que indica el tipo de contenido del cuerpo de la solicitud o respuesta. Por ejemplo, si se está enviando datos en formato JSON en el cuerpo de la solicitud, el "Content-Type" debe establecerse en "application/json". Si se está enviando una imagen, el "Content-Type" podría establecerse en "image/jpeg" o "image/png", dependiendo del tipo de imagen.
+
+Aquí hay un ejemplo de cómo establecer el "Content-Type" en una solicitud HTTP utilizando el objeto XMLHttpRequest en JavaScript:
+
+let xhr = new XMLHttpRequest();
+xhr.open("POST", "https://ejemplo.com/api/endpoint", true);
+xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); // Establecer Content-Type como application/json
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === XMLHttpRequest.DONE) {
+    if (xhr.status === 200) {
+      // La solicitud se completó exitosamente
+      console.log(xhr.responseText);
+    } else {
+      // Se produjo un error en la solicitud
+      console.error("Error en la solicitud: " + xhr.status);
+    }
+  }
+};
+let data = {
+  nombre: "Juan",
+  apellido: "Perez"
+};
+xhr.send(JSON.stringify(data));
+
+En este ejemplo, se establece el "Content-Type" como "application/json" para indicar que el cuerpo de la solicitud contiene datos en formato JSON. La función JSON.stringify() se utiliza para convertir el objeto de datos JavaScript en una cadena JSON antes de enviarlo en el cuerpo de la solicitud.
+
+-----------------------------------------------------------
+
+// FormData: publicando imágenes de gatitos
+
+-----------------------------------------------------------
+
+// Axios: librerías de JavaScript para consumir APIs
 
 -----------------------------------------------------------

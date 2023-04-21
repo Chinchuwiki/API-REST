@@ -1,8 +1,7 @@
-const URL =
-  "https://api.thecatapi.com/v1/images/search?limit=4&api_key=live_jjsliyvCbyuzJAfWopFtDJRE7CTHVL7mI9AhOgI0TAyyVr2abQgPy5oU0mOCvb9F";
-const URL_Favourites =
-  "https://api.thecatapi.com/v1/favourites?api_key=live_jjsliyvCbyuzJAfWopFtDJRE7CTHVL7mI9AhOgI0TAyyVr2abQgPy5oU0mOCvb9F";
-const URL_Delete = (id) => `https://api.thecatapi.com/v1/favourites/${id}?api_key=live_jjsliyvCbyuzJAfWopFtDJRE7CTHVL7mI9AhOgI0TAyyVr2abQgPy5oU0mOCvb9F`;
+const URL = "https://api.thecatapi.com/v1/images/search?limit=4";
+const URL_Favourites = "https://api.thecatapi.com/v1/favourites";
+const URL_Delete = (id) => `https://api.thecatapi.com/v1/favourites/${id}`;
+const URL_Upload = "https://api.thecatapi.com/v1/images/upload";
 const img1 = document.getElementById("imagenAleatoria1");
 const img2 = document.getElementById("imagenAleatoria2");
 const img3 = document.getElementById("imagenAleatoria3");
@@ -12,7 +11,9 @@ const checkIcon2 = document.getElementById("checkIcon2");
 const checkIcon3 = document.getElementById("checkIcon3");
 const checkIcon4 = document.getElementById("checkIcon4");
 const botonSiguiente = document.getElementById("botonSiguiente");
+const botonSubir = document.getElementById("botonSubir");
 const spanError = document.getElementById("error");
+const inputFile = document.getElementById('file');
 
 async function imagenAleatoria() {
   const res = await fetch(URL);
@@ -36,21 +37,27 @@ window.addEventListener("load", imagenAleatoria);
 botonSiguiente.addEventListener("click", imagenAleatoria);
 
 async function imagenFavorita() {
-  const res = await fetch(URL_Favourites);
+  const res = await fetch(URL_Favourites, {
+    method: "GET",
+    headers: {
+      "X-API-KEY":
+        "live_jjsliyvCbyuzJAfWopFtDJRE7CTHVL7mI9AhOgI0TAyyVr2abQgPy5oU0mOCvb9F",
+    },
+  });
   const data = await res.json();
   console.log("imagenFavorita", data);
   if (res.status !== 200) {
     spanError.innerText = "Hubo un error:" + res.status + data.message;
   } else {
     const section = document.getElementById("sectionImagenFavoritos");
-    section.innerHTML= '';
+    section.innerHTML = "";
     data.forEach((gatito) => {
       const article = document.createElement("article");
       const img = document.createElement("img");
       const btn = document.createElement("button");
       const btnText = document.createTextNode("Borrar");
 
-      article.id = "articleFavorito"
+      article.id = "articleFavorito";
       img.id = "imgFavorito";
       img.src = gatito.image.url;
       btn.id = "botonBorrar";
@@ -67,7 +74,11 @@ window.addEventListener("load", imagenFavorita);
 async function guardarImagenFavorita(id) {
   const res = await fetch(URL_Favourites, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "X-API-KEY":
+        "live_jjsliyvCbyuzJAfWopFtDJRE7CTHVL7mI9AhOgI0TAyyVr2abQgPy5oU0mOCvb9F",
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({ image_id: id }),
   });
   const data = await res.json();
@@ -75,7 +86,7 @@ async function guardarImagenFavorita(id) {
   if (res.status !== 200) {
     spanError.innerText = "Hubo un error:" + res.status + data.message;
   } else {
-    console.log('Gatito guardado en favoritos')
+    console.log("Gatito guardado en favoritos");
     imagenFavorita();
   }
 }
@@ -83,12 +94,45 @@ async function guardarImagenFavorita(id) {
 async function borrarImagenFavorita(id) {
   const res = await fetch(URL_Delete(id), {
     method: "DELETE",
+    headers: {
+      "X-API-KEY":
+        "live_jjsliyvCbyuzJAfWopFtDJRE7CTHVL7mI9AhOgI0TAyyVr2abQgPy5oU0mOCvb9F",
+    },
   });
   const data = await res.json();
+  console.log("data", data);
   if (res.status !== 200) {
     spanError.innerText = "Hubo un error:" + res.status + data.message;
   } else {
-    console.log('Gatito borrado en favoritos')
+    console.log("Gatito borrado en favoritos");
     imagenFavorita();
   }
 }
+
+async function subirFotoGatito() {
+  const form = document.getElementById("subidaFormulario");
+  const formData = new FormData(form);
+  console.log(formData.get("file"));
+
+  const res = await fetch(URL_Upload, {
+    method: 'POST',
+    headers: {
+      'X-API-KEY':
+        'live_jjsliyvCbyuzJAfWopFtDJRE7CTHVL7mI9AhOgI0TAyyVr2abQgPy5oU0mOCvb9F',
+    },
+    body: formData,
+  });
+  const data = await res.json();
+
+  if (res.status !== 201) {
+    spanError.innerHTML = "Hubo un error:" + res.status + data.message;
+    console.log({data});
+  } else {
+    console.log("Foto subida de gatito");
+    console.log({ data });
+    console.log(data.url);
+    guardarImagenFavorita(data.id);
+    inputFile.value = '';
+  }
+}
+botonSubir.addEventListener("click", subirFotoGatito);
